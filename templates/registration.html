@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content_registration %}
+    <title>{{title}}</title>
+    <center><h1>Registration</h1></center>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(class="form-control", type="username") }}<br>
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(class="form-control", type="password") }}<br>
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        {% if message %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content_chat %}
+    <title>{{title}}</title>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="/view_profile/{{user.username}}">
+        {% if user.last_seen %}
+          {{user.username}} last seen {{user.last_seen}}
+        {% else %}
+          {{user.username}}
+        {% endif %}
+      </a>
+      <form class="form-inline" method="post">
+        <input class="form-control mr-sm-2" placeholder="Enter message" name="msg">
+        <button class="btn btn-primary" name="button" value="Send">Send</button>
+      </form>
+    </nav>
+    <center><h4>Message history</h4></center>
+    {% if chat.data %}
+        {% for i in chat.data.split('/')[:-1] %}
+            {% if (i.split('★')[1] == current_user.username + ' to ' + user.username) %}
+                <div class="alert alert-primary" role="alert" align="right">
+                  {{i.split('★')[0]}} <----- {{i.split('★')[1]}} {{i.split('★')[2]}}
+                </div>
+            {% else %}
+                <div class="alert alert-light" role="alert">
+                  {{i.split('★')[1]}} {{i.split('★')[2]}} -----> {{i.split('★')[0]}}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <center>
+            <img src="/static/img/cat.png" width="400" height="500">
+            <h4>No messages here yet</h4>
+        </center>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content_my_profile %}
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+    <title>{{title}}</title>
+    <br>
+    <div class="mx-auto" style="width: 500px;">
+        <form class="profile_form" method="post">
+            <div>
+                <center><h1>Your profile</h1></center>
+            </div>
+        </form>
+    </div>
+    <center><h1>You have logged in as {{current_user.username}}</h1></center>
+    <center><h4>Your chats</h4></center>
+    {% for i in my_chats %}
+    {% set pair = i.pair.split('★') %}
+        {% if pair[0] == current_user.username %}
+            <div class="alert alert-info" role="alert">
+            Chat with <a href="/chat/{{current_user.username}}&{{pair[1]}}" class="alert-link">@{{pair[1]}}</a>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+            Chat with <a href="/chat/{{current_user.username}}&{{pair[0]}}" class="alert-link">@{{pair[0]}}</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

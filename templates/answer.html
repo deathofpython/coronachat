@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content_answer %}
+    <title>{{title}}</title>
+    <center><h1>Результаты поиска по запросу "{{param[0]}}"</h1></center>
+    {% if param[3](param[2](param[1])) != 0 %}
+        <div class="alert alert-success" role="alert">
+            Результатов найдено: {{param[3](param[2](param[1]))}}
+        </div>
+        {% for i in param[1] %}
+            <div class="alert alert-info" role="alert">
+              User <a href="/view_profile/{{i.username}}" class="alert-link">@{{i.username}}</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Результатов не найдено
+        </div>
+    {% endif %}
+{% endblock %}
