@@ -151,12 +151,3 @@ def start_chat(username1, username2):
         elif request.form['button'] == 'Search':
             session["id"] = request.form["id"]
             return redirect('/answer')
-
-
-def main():
-    db_session.global_init('db/blogs.sqlite')
-    app.run(host='0.0.0.0', port=100)
-
-
-if __name__ == '__main__':
-    main()
