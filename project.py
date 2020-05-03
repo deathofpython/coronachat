@@ -1,0 +1,1 @@
+https://coronachat-for-yandex.herokuapp.com/start_page
