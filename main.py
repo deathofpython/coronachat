@@ -155,7 +155,7 @@ def start_chat(username1, username2):
 
 def main():
     db_session.global_init('db/blogs.sqlite')
-    app.run(port=80, host='0.0.0.0')
+    app.run(host='0.0.0.0', port="80")
 
 
 if __name__ == '__main__':
