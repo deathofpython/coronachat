@@ -8,6 +8,7 @@ from data import models
 from data import db_session
 from hashing import hash_algorythm
 from make_date import make_date
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -155,7 +156,8 @@ def start_chat(username1, username2):
 
 def main():
     db_session.global_init('db/blogs.sqlite')
-    app.run(host='0.0.0.0', port=1000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 if __name__ == '__main__':
