@@ -136,7 +136,7 @@ def start_chat(username1, username2):
                                chat=chatter_box, function=list)
     if request.method == 'POST':
         if request.form['button'] == 'Send':
-            message = request.form["msg"] + '★' + username1 + ' to ' + username2 + '★' + 'at ' + make_date() + '/'
+            message = request.form["msg"] + '★' + username1 + ' to ' + username2 + '★' + 'at ' + make_date() + '☆'
             if not chatter_box:
                 chat = models.Chat()
                 pair = user1.username + '★' + user2.username
