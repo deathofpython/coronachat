@@ -57,8 +57,9 @@ def login():
             database_session = db_session.create_session()
             user = database_session.query(models.User).filter(models.User.username == form.username.data).first()
             if user and user.check_password(form.password.data):
-                login_user(user)
                 user.last_seen = 'online now'
+                database_session.commit()
+                login_user(user)
                 return redirect('/start_page')
             else:
                 return render_template('login.html', title='Login', message="Wrong login or password", form=form)
