@@ -72,7 +72,7 @@ def login():
 def logout(username):
     database_session = db_session.create_session()
     user = database_session.query(models.User).filter(models.User.username == username).first()
-    user.last_seen = make_date()
+    user.last_seen = 'last seen ' + make_date()
     database_session.commit()
     logout_user()
     return redirect("/start_page")
