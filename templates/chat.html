@@ -4,7 +4,11 @@
     <title>{{title}}</title>
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="/view_profile/{{user.username}}">
-          {{user.last_seen}}
+          {% if user.last_seen %}
+            {{user.username}} {{user.last_seen}}
+          {% else %}
+            {{user.username}}
+          {% endif %}
       </a>
       <form class="form-inline" method="post">
         <input class="form-control mr-sm-2" placeholder="Enter message" name="msg">
